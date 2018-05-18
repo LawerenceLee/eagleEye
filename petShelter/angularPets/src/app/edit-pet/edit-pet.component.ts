@@ -35,7 +35,7 @@ export class EditPetComponent implements OnInit {
   }
 
   // UPON SUBMISSION OF EDIT FORM, PASS EDITED Pet ALONG W/ ITS ID TO SERVICE
-  onEdit() {
+  onEdit(petId) {
     this._httpService.putPet(this.editedPet["_id"], this.editedPet).subscribe(data => {
         if (data["message"] === "error") { this.errors.push(data["error"]) }
         else { 
@@ -49,9 +49,13 @@ export class EditPetComponent implements OnInit {
                 skill3: "",
               }
             }; 
-            this._router.navigate(["/pets"]);
+            this._router.navigate([`/pets/${petId}`]);
         }
     })
+  }
+
+  toAdoptRoute(petId) {
+    this._router.navigate([`/pets/${petId}`])
   }
 
 }

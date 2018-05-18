@@ -1,6 +1,6 @@
 <p class="alert alert-danger" role="alert" *ngFor="let error of errors">{{ error }}</p>
 <p>Edit this pet</p>
-<form class="form-group" (submit)="onEdit()">
+<form class="form-group" (submit)="onEdit(editedPet._id)">
   <p>Name: <input class="form-control" name="editedPet['name']" [(ngModel)]="editedPet['name']"></p>
   <p>Pet type: <input class="form-control" name="editedPet['type']" [(ngModel)]="editedPet['type']"></p>
   <p>Description: <input class="form-control" name="editedPet['desc']" [(ngModel)]="editedPet['desc']"></p>
@@ -10,5 +10,5 @@
   <p>Skill 3: <input class="form-control" name="editedPet.skills['skill3']" [(ngModel)]="editedPet.skills['skill3']"></p>
   
   <button class="btn btn-primary" type="submit">Edit Pet</button>
-  <button class="btn btn-link" type="button" [routerLink]="['/pets']">Cancel</button>
+  <button class="btn btn-warning" (click)="toAdoptRoute(editedPet._id)">Cancel</button>
 </form>
