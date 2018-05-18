@@ -1,0 +1,15 @@
+<p class="alert alert-danger" role="alert" *ngFor="let error of errors">{{ error }}</p>
+<p>Know of a pet needing a home?</p>
+{{ newPet | json }}
+<form class="form-group" (submit)="onSubmit()">
+  <p>Name: <input class="form-control" name="newPet['name']" [(ngModel)]="newPet['name']"></p>
+  <p>Pet type: <input class="form-control" name="newPet['type']" [(ngModel)]="newPet['type']"></p>
+  <p>Description: <input class="form-control" name="newPet['desc']" [(ngModel)]="newPet['desc']"></p>
+  <p>Skills (optional):</p>
+  <p>Skill 1: <input class="form-control" name="newPet.skills['skill1']" [(ngModel)]="newPet.skills['skill1']"></p>
+  <p>Skill 2: <input class="form-control" name="newPet.skills.skills['skill2']" [(ngModel)]="newPet.skills['skill2']"></p>
+  <p>Skill 3: <input class="form-control" name="newPet.skills['skill3']" [(ngModel)]="newPet.skills['skill3']"></p>
+  
+  <button class="btn btn-primary" type="submit">Add Pet</button>
+  <button class="btn btn-link" type="button" [routerLink]="['/pets']">Cancel</button>
+</form>

@@ -1,0 +1,9 @@
+<p class="alert alert-danger" role="alert" *ngFor="let error of errors">{{ error }}</p>
+<button class="btn btn-link" type="button" [routerLink]="['/pets']">Home</button>
+<p>Details about {{ currentPet.name }}</p>
+<p>Pet type: {{ currentPet.type }}</p>
+<p>Description: {{ currentPet.desc }}</p>
+<p>Skills: {{ currentPet.skills.skill1 }}</p>
+<p>        {{ currentPet.skills.skill2 }}</p>
+<p>        {{ currentPet.skills.skill3 }}</p>
+<button class="btn btn-link" type="button" (click)="adopted(currentPet._id)">Adopt this pet!</button>
