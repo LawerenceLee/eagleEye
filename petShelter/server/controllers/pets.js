@@ -20,8 +20,22 @@ module.exports = {
         Pet.findById(req.params.petId, returnObjBuilder(res))
     },
     update: (req, res) => {
-        Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true}, returnObjBuilder(res))
+        Pet.findByIdAndUpdate(req.params.petId, req.body, {new: true, runValidators: true}, returnObjBuilder(res))
     },
+    // update: (req, res) => {
+    //     Pet.find({"_id": req.params.petId}, (err, pet) => {
+    //         if (err) { res.json({ message: "error", error: err.message }) }
+    //         else { 
+    //             pet = req.body;
+    //             pet.save(err => {
+    //                 if (err) {
+    //                     res.json({ message: "error", error: err.message }) 
+    //                 }
+    //                 res.json({ message: "success", data: pet }) 
+    //             })
+    //         } 
+    //     })
+    // }, 
     destroy: (req, res) => {
         Pet.findByIdAndRemove(req.params.petId, returnObjBuilder(res))
     }
